@@ -23,6 +23,7 @@ CompareNumber.prototype.compare = function(answer,input){
 	return a+'A'+b+'B';
 
 };
+
 CompareNumber.prototype.compareA = function(num,_inputAttr,j){
 	var b = 0 , a = 0;
 	var temp = [];

@@ -6,13 +6,20 @@ describe('CompareNumber',function(){
 		var answerGenerator;
       var result;
 		beforeEach(function(){
-			answerGenerator  = new AnswerGenerator ();
+			var count = 0;
+			spyOn(Math,'random').and.callFake(function(){
+				var countNumbers = [0.1,0.1,0.2,0.3,0.4];
+				return countNumbers[count++];
+			});
+			answerGenerator  = new AnswerGenerator(Math.random);
          result = answerGenerator._random();
+				
 		});
 
-    it('is a number',function(){
+    it('is a  random number',function(){
+       expect(result).toBe(1234);
 
-           expect(isNaN(result)).toBe(false);
+
 
       });
       it('is a  four number',function(){
@@ -33,18 +40,18 @@ describe('CompareNumber',function(){
 
              for(var y =  0; y <  temp.length; y++){
                  m = result.indexOf(temp[y]);
-                 
-               
+
+
                for(var j =  0; j <  index.length; j++){
                  if(m !== -1&&m ===  index[j]){
                     flag = 1;
                      break;
                  }
                  }
-                 if(flag === 0){ 
+                 if(flag === 0){
                    index.push(m);
                  }
-               
+
              }
 
            expect(index.length).toBe(4);

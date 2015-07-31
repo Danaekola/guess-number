@@ -1,5 +1,6 @@
 'use strict';
-function AnswerGenerator(){
+function AnswerGenerator(random){
+  this.random = random;
 }
 AnswerGenerator.prototype._random = function(){
     var y;
@@ -7,7 +8,7 @@ AnswerGenerator.prototype._random = function(){
     var flag = 0;
     var temp = [];
     for( var x = 0; x < 4 ; x++) {
-        y = Math.random()*9+1;
+        y = this.random()*10;
         for(var i = 0; i < temp.length; i++){
            if(temp[i] === parseInt(y)) {
             flag = 1;
